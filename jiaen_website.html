@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加恩企業社 - 專業木箱包裝與搬運服務</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* 導航列 */
+        nav {
+            background: linear-gradient(135deg, #2c5f8d 0%, #4a8bb8 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 首頁橫幅 */
+        .hero {
+            background: linear-gradient(135deg, #2c5f8d 0%, #5a9ec9 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s 0.3s backwards;
+        }
+
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-icon {
+            text-align: center;
+            animation: fadeInUp 1s backwards;
+        }
+
+        .hero-icon:nth-child(1) { animation-delay: 0.5s; }
+        .hero-icon:nth-child(2) { animation-delay: 0.7s; }
+        .hero-icon:nth-child(3) { animation-delay: 0.9s; }
+        .hero-icon:nth-child(4) { animation-delay: 1.1s; }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        /* 區塊容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c5f8d;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5f8d, #5a9ec9);
+            border-radius: 2px;
+        }
+
+        /* 關於我們 */
+        .about-content {
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f2f7 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: center;
+            color: #555;
+        }
+
+        .highlight {
+            color: #2c5f8d;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* 廠房介紹 */
+        .facility-section {
+            background: #f8f9fa;
+        }
+
+        .facility-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .facility-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .facility-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #2c5f8d;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #2c5f8d;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* 服務內容 */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #2c5f8d;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: #2c5f8d;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* 競爭優勢 */
+        .advantages-section {
+            background: linear-gradient(135deg, #2c5f8d 0%, #5a9ec9 100%);
+            color: white;
+        }
+
+        .advantages-section .section-title {
+            color: white;
+        }
+
+        .advantages-section .section-title::after {
+            background: white;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .advantage-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .advantage-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .advantage-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .advantage-description {
+            opacity: 0.9;
+        }
+
+        /* 合作夥伴 */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .partner-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .partner-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+
+        .partner-logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2c5f8d;
+        }
+
+        .partner-name {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* 聯絡資訊 */
+        .contact-section {
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f2f7 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #2c5f8d;
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-weight: bold;
+            color: #2c5f8d;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #666;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            min-height: 40px;
+        }
+
+        /* 頁尾 */
+        footer {
+            background: #1a3a52;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* 動畫 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .facility-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .contact-grid,
+            .advantages-grid,
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航列 -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">加恩企業社</a>
+            <ul class="nav-menu">
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#facility">廠房介紹</a></li>
+                <li><a href="#services">服務內容</a></li>
+                <li><a href="#advantages">競爭優勢</a></li>
+                <li><a href="#partners">合作夥伴</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首頁橫幅 -->
+    <section class="hero">
+        <h1>加恩企業社</h1>
+        <p class="hero-subtitle">誠信、品質、效率、實惠 - 您最值得信賴的協力夥伴</p>
+        <div class="hero-icons">
+            <div class="hero-icon">
+                <div class="icon-circle">🤝</div>
+                <p>誠信</p>
+            </div>
+            <div class="hero-icon">
+                <div class="icon-circle">✓</div>
+                <p>品質</p>
+            </div>
+            <div class="hero-icon">
+                <div class="icon-circle">⏰</div>
+                <p>效率</p>
+            </div>
+            <div class="hero-icon">
+                <div class="icon-circle">💰</div>
+                <p>實惠</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我們 -->
+    <section id="about" class="container">
+        <h2 class="section-title">關於加恩</h2>
+        <div class="about-content fade-in">
+            <p class="about-text">
+                加恩企業社成立於2019年，擁有十年以上資歷之專業技師。<br>
+                公司以<span class="highlight">「誠信、品質、效率、實惠」</span>為經營理念，<br>
+                長期與各大電子與機械製造企業建立穩定合作關係，<br>
+                致力於成為中小型產業鏈中最值得信賴的協力夥伴。
+            </p>
+        </div>
+    </section>
+
+    <!-- 廠房介紹 -->
+    <section id="facility" class="facility-section">
+        <div class="container">
+            <h2 class="section-title">廠房介紹</h2>
+            <div class="facility-content">
+                <img src="/mnt/user-data/uploads/加恩_2.jpg" alt="廠房實景" class="facility-image fade-in">
+                <div class="facility-info">
+                    <div class="info-card fade-in">
+                        <div class="info-label">📍 廠區位置</div>
+                        <div class="info-value">桃園中壢工業區</div>
+                    </div>
+                    <div class="info-card fade-in">
+                        <div class="info-label">📏 廠房面積</div>
+                        <div class="info-value">約 250 坪</div>
+                    </div>
+                    <div class="info-card fade-in">
+                        <div class="info-label">🔧 專業設備</div>
+                        <div class="info-value">專業器材、搬運機器等</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服務內容 -->
+    <section id="services" class="container">
+        <h2 class="section-title">服務內容</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">📦</div>
+                <h3 class="service-title">設計包裝</h3>
+                <p class="service-description">專業木箱包裝</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🪚</div>
+                <h3 class="service-title">木材製作</h3>
+                <p class="service-description">各式尺寸木箱、棧板</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🏗️</div>
+                <h3 class="service-title">機械遷移定位</h3>
+                <p class="service-description">專業機械搬遷服務</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🚚</div>
+                <h3 class="service-title">機械木箱貨櫃裝卸搬運</h3>
+                <p class="service-description">完整物流解決方案</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 競爭優勢 -->
+    <section id="advantages" class="advantages-section">
+        <div class="container">
+            <h2 class="section-title">競爭優勢</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">💵</div>
+                    <h3 class="advantage-title">彈性報價</h3>
+                    <p class="advantage-description">經濟實惠</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">💬</div>
+                    <h3 class="advantage-title">售後協助</h3>
+                    <p class="advantage-description">良好溝通</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">✅</div>
+                    <h3 class="advantage-title">小量大量</h3>
+                    <p class="advantage-description">皆可接單</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">📊</div>
+                    <h3 class="advantage-title">高效交貨</h3>
+                    <p class="advantage-description">質量穩定</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">📦</div>
+                    <h3 class="advantage-title">搬運裝箱</h3>
+                    <p class="advantage-description">一條龍服務</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作夥伴 -->
+    <section id="partners" class="container">
+        <h2 class="section-title">主要合作對象</h2>
+        <div class="partners-grid">
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🏢</div>
+                <p class="partner-name">奕楊科技<br>股份有限公司</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🏢</div>
+                <p class="partner-name">台灣東京精密<br>股份有限公司</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🚚</div>
+                <p class="partner-name">新筱工程<br>有限公司</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🏢</div>
+                <p class="partner-name">光環科技<br>股份有限公司</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🏢</div>
+                <p class="partner-name">巨茂應用材料<br>股份有限公司</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🏢</div>
+                <p class="partner-name">寰邦科技<br>股份有限公司</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🏢</div>
+                <p class="partner-name">盧森堡商源捷科技股份<br>有限公司台灣分公司</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">☀️</div>
+                <p class="partner-name">日月光集團<br>中壢廠</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🏢</div>
+                <p class="partner-name">京元電子<br>股份有限公司</p>
+            </div>
+            <div class="partner-card fade-in">
+                <div class="partner-logo">🏢</div>
+                <p class="partner-name">愛德萬測試<br>股份有限公司</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡資訊 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">聯絡資訊</h2>
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-label">聯絡電話</div>
+                    <div class="contact-value">待補充</div>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-label">電子郵件</div>
+                    <div class="contact-value">待補充</div>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-label">公司地址</div>
+                    <div class="contact-value">待補充</div>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">🕒</div>
+                    <div class="contact-label">營業時間</div>
+                    <div class="contact-value">待補充</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2024 加恩企業社 版權所有</p>
+    </footer>
+
+    <script>
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 滾動動畫
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 導航列滾動效果
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.querySelector('nav');
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
